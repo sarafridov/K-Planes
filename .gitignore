@@ -1,0 +1,8 @@
+# Only include videos if they start with 'small'
+**/*.mp4
+!**/small*.mp4
+
+*.ipynb
+**/.ipynb_checkpoints
+*.pdf
+

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<style type="text/css">
+h1 {
+    font-weight:300;
+    line-height: 1.15em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+.btn-group a:link {
+    color: #fff;
+}
+a:link, a:visited {
+    color: #1367a7;
+    text-decoration: none;
+}
+a:hover {
+    color: #208799;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+h2, h3 {
+    font-weight: 400;
+    margin: 16px 0px 4px 0px;
+}
+.paper-title {
+    padding: 16px 0px 16px 0px;
+}
+section {
+    margin: 32px 0px 32px 0px;
+    text-align: justify;
+    clear: both;
+}
+.col-5 {
+     width: 20%;
+     float: left;
+}
+.col-4 {
+     width: 25%;
+     float: left;
+}
+.col-2 {
+     width: 50%;
+     float: left;
+}
+.row, .author-row, .affil-row {
+     overflow: auto;
+}
+.row {
+    margin: 16px 0px 16px 0px;
+}
+.authors {
+    font-size: 18px;
+}
+.teaser {
+    max-width: 100%;
+}
+.text-center {
+    text-align: center;
+}
+.screenshot {
+    width: 256px;
+    border: 1px solid #ddd;
+}
+hr {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 0;
+}
+.material-icons {
+    vertical-align: -6px;
+}
+p {
+    line-height: 1.25em;
+}
+.caption_justify {
+    font-size: 16px;
+    /*font-style: italic;*/
+    color: #666;
+    text-align: justify;
+    margin-top: 0px;
+    margin-bottom: 64px;
+}
+.caption {
+    font-size: 16px;
+    /*font-style: italic;*/
+    color: #666;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 64px;
+}
+.caption_inline {
+    font-size: 16px;
+    /*font-style: italic;*/
+    color: #666;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+.caption_bold {
+    font-size: 16px;
+    /*font-style: italic;*/
+    color: #666;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+video {
+    display: block;
+    margin: auto;
+}
+figure {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#bibtex pre {
+    font-size: 14px;
+    background-color: #eee;
+    padding: 16px;
+}
+.blue {
+    color: #2c82c9;
+    font-weight: bold;
+}
+.orange {
+    color: #d35400;
+    font-weight: bold;
+}
+.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.venue {
+    color: #1367a7;
+}
+</style>
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="TODO: Insert description">
+    <meta name="author" content="Giacomo Meanti*,
+                                Sara Fridovich-Keil*,
+                                Frederik Warburg,
+                                Ben Recht,
+                                Angjoo Kanazawa">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+    <title>K-Plane</title>
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h1 class="nerf_title_v2">K-Planes</h1>
+    <h1 class="nerf_subheader_v2">for Radiance Fields in Space, Time, and Appearance</h1>
+    <hr>
+    <p class="authors">
+        <a href="https://people.eecs.berkeley.edu/~sfk/">Sara Fridovich-Keil*</a>,
+        <a href="https://www.iit.it/web/iit-mit-usa/people-details/-/people/giacomo-meanti">Giacomo Meanti*</a>,
+        <a href="https://frederikwarburg.github.io/">Frederik Rahbæk Warburg</a>,
+        <a href="https://people.eecs.berkeley.edu/~brecht/">Benjamin Recht</a>,
+        <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+    </p>
+
+    <div class="nerf_equal_v2"><span class="text-span_nerf">*</span><span class="text-span_nerf_star">*</span>Denotes Equal Contribution</div>
+
+    </br></br>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="">Paper</a>
+        <a class="btn btn-primary" href="https://github.com/sarafridov/K-Plane">Code</a>
+    </div>
+</div>
+
+
+<div class="container">
+    <section id="teaser-videos">
+        <div style="width: 25%; float: left">
+            <p class="caption_bold">Static</p>
+        </div>
+        <div style="width: 25%; float: left">
+            <p class="caption_bold">Monocular video</p>
+        </div>
+        <div style="width: 25%; float: left">
+            <p class="caption_bold">Multipose video</p>
+        </div>
+        <div style="width: 25%; float: left">
+            <p class="caption_bold">Phototourism</p>
+        </div>
+        <figure style="width: 100%; float: left">
+            <video class="centered" width="100%" autoplay muted loop playsinline>
+                <source src="assets/small_teaser.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </figure>
+        <figure style="width: 100%; float: left">
+            <p class="caption_justify">
+                The K-Planes model is adapted to learning radiance fields on multiple tasks. On static scenes we use an explicit representation of space as 3 orthogonal planes. Dynamic scenes require three more planes to represent variations in the scene which occur in the time dimension. Both monocular (a single view per time-step) and multi-view (multiple cameras recording at every time-step) videos are supported.
+                Lastly, unconstrained photo datasets such as <href a="https://www.cs.ubc.ca/research/image-matching-challenge/2021/data/">phototourism data</href> can also be handled with the addition of per-image latent codes. Our model is flexible and efficient, providing high quality reconstructions on all tasks with limited training time and memory.
+            </p>
+        </figure>
+    </section>
+
+    <section id="abstract"/>
+        <h2>Abstract</h2>
+        <hr>
+        <figure style="margin: auto; width: 80%;">
+            <img class="centered" src="assets/intro_figure.jpg" alt="Diagram describing the K-Planes model.">
+        </figure>
+        <p lass="caption_justify">
+We introduce K-Planes, a white-box model for radiance fields in arbitrary dimensions. Our model uses <it>d</it>-<it>choose</it>-<it>2</it> planes to represent a d-dimensional scene. This planar decomposition makes it easy to add dimension-specific priors, e.g. temporal smoothness and multi-resolution spatial structure, and induces a natural decomposition of static and dynamic components. We propose a novel linear feature decoder using a learned color basis that yields similar performance as a nonlinear black-box MLP decoder. Across a range of synthetic and real, static and dynamic, fixed and varying appearance scenes, K-Planes yields competitive and often state-of-the-art reconstruction fidelity with low memory usage and fast optimization time, using a PyTorch implementation without any custom CUDA.
+        </p>
+    </section>
+
+
+    <section id="method"/>
+        <h2>Method</h2>
+        <hr>
+        <figure style="margin: auto; width: 80%;">
+            <img class="centered" src="assets/methods_ss.jpg" alt="Diagram describing the pipeline for K-Planes.">
+        </figure>
+        <p class="caption_justify">
+            <b>Method overview.</b> (a) The k-plane representation decomposes 4D spatiotemporal volumes into six planes, three for space and three for spatiotemporal variations. To obtain the value of a 4D point \(\textbf{q}=(x,y,z,t)\), we first project the point into each plane (b) in which we do multiscale bilinear interpolation. (c) The interpolated values are multiplied and concatenated over \(S\) scales. (d) These features are decoded either with a small MLP or our explicit decoder. (e) We follow the standard volumetric rendering formulation to predict color and density. The model is optimized by (f) minimizing the reconstruction loss with simple regularization.
+        </p>
+    </section>
+
+
+    <section id="results">
+        <h2>Results</h2>
+
+        <h3>Static Scenes: Forward Facing</h3>
+        <hr>
+
+        <figure>
+            <video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_room_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_fern_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_leaves_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_fortress_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_orchids_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_flower_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_trex_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/llff/small_horns_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </figure>
+        <p class="caption_justify">
+            Reconstruction and novel view generation on a dataset of real-life forward facing captures (the LLFF dataset).
+        </p>
+
+        <h3>Static Scenes: Synthetic NeRF</h3>
+        <hr>
+        <figure>
+            <video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_ship_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_chair_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_drums_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_ficus_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_hotdog_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_lego_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_materials_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><video class="centered results_video" width="23%" autoplay muted loop playsinline>
+                <source src="assets/synth360/small_mic_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </figure>
+        <p class="caption_justify">
+            Reconstruction and novel view generation on a dataset of synthetic objects (the NeRF dataset).
+        </p>
+
+        <h3>Dynamic Scenes: Real-life capture</h3>
+        <hr>
+        <figure style="width: 50%; float: left">
+            <video class="centered" width="100%" autoplay muted loop playsinline>
+                <source src="assets/dynerf/small_salmon_path_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="caption_bold">(a) Hybrid model</p>
+        </figure>
+        <figure style="width: 50%; float: left">
+            </video><video class="centered" width="100%" autoplay muted loop playsinline>
+                <source src="assets/dynerf/small_salmon_path_linear.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="caption_bold">(b) Explicit model</p>
+        </figure>
+        <p class="caption_justify">
+            Reconstruction and novel view generation on a multiview dataset of dynamic real-life forward facing scenes (the DyNeRF dataset).
+        </p>
+
+        <br>
+
+        <!-- DyNeRF Space-time decomposition -->
+        <div style="width: 33%; float: left">
+            <p class="caption_bold">Full</p>
+        </div>
+        <div style="width: 33%; float: left">
+            <p class="caption_bold">Space-only</p>
+        </div>
+        <div style="width: 33%; float: left">
+            <p class="caption_bold">Time-only</p>
+        </div>
+        <video class="centered" width="100%" autoplay muted loop playsinline>
+            <source src="assets/dynerf/small_salmon_spacetime_mlp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video class="centered" width="100%" autoplay muted loop playsinline>
+            <source src="assets/dynerf/small_cutbeef_spacetime_mlp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <figure style="width: 100%; float: left">
+            <p class="caption_justify">
+K-Planes (left) naturally decomposes a 3D video into static and dynamic components. We render the static part (middle) by setting the time planes to the identity, and the remainder (right) is the dynamic part.
+            </p>
+        </figure>
+
+        <h3>Dynamic Scenes: Monocular videos</h3>
+        <hr>
+        <!-- DNeRF MLP vs. Linear -->
+        <div class="centered" style="margin-left: 16.66666%;">
+            <figure style="width: 40%; float: left">
+                <video class="centered" width="100%" autoplay muted loop playsinline>
+                    <source src="assets/dnerf/small_jumpingjacks_path_mlp.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </figure>
+            <figure style="width: 40%; float: left">
+                </video><video class="centered" width="100%" autoplay muted loop playsinline>
+                    <source src="assets/dnerf/small_jumpingjacks_path_linear.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </figure>
+
+            <figure style="width: 40%; float: left">
+                <video class="centered" width="100%" autoplay muted loop playsinline>
+                    <source src="assets/dnerf/small_trex_path_mlp.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption_bold">(a) Hybrid model</p>
+            </figure>
+            <figure style="width: 40%; float: left">
+                <video class="centered" width="100%" autoplay muted loop playsinline>
+                    <source src="assets/dnerf/small_trex_path_linear.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption_bold">(b) Explicit model</p>
+            </figure>
+        </div>
+        <figure style="width: 100%; float: left">
+            <p class="caption_justify">
+                Reconstruction and novel view generation on a monocular dataset of dynamic synthetic objects (the D-NeRF dataset).
+            </p>
+        </figure>
+        <br>
+
+        <!-- DNeRF Space-time decomposition -->
+        <div class="centered" style="margin-left: 12.5%">
+            <div style="width: 25%; float: left">
+                <p class="caption_bold">Full</p>
+            </div>
+            <div style="width: 25%; float: left">
+                <p class="caption_bold">Space-only</p>
+            </div>
+            <div style="width: 25%; float: left">
+                <p class="caption_bold">Time-only</p>
+            </div>
+            <video class="centered" width="75%" autoplay muted loop playsinline>
+                <source src="assets/dnerf/small_bouncingballs_spacetime_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video class="centered" width="75%" autoplay muted loop playsinline>
+                <source src="assets/dnerf/small_lego_spacetime_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <figure style="width: 100%; float: left">
+            <p class="caption_justify">
+K-Planes (left) naturally decomposes a 3D video into static and dynamic components. We render the static part (middle) by setting the time planes to the identity, and the remainder (right) is the dynamic part.
+            </p>
+        </figure>
+
+        <h3>In the wild capture: Varying appearance</h3>
+        <hr>
+        <div class="centered">
+            <figure style="float: left;">
+                <video class="centered results_video" width="31%" autoplay muted loop playsinline>
+                    <source src="assets/nerfw/small_sacre_rendering_path.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video><video class="centered results_video" width="31%" autoplay muted loop playsinline>
+                    <source src="assets/nerfw/small_trevi_rendering_path.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video><video class="centered results_video" width="31%" autoplay muted loop playsinline>
+                    <source src="assets/nerfw/small_brandenburg_rendering_path.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </figure>
+            <p class="caption_justify">
+              Like NeRF-W, we can
+interpolate our appearance code in either our explicit or hybrid model to alter the visual appearance of
+landmarks, such as changing time of day. Appearance codes affect color but not geometry; note that objects in the foreground appear and disappear as the camera moves past them.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section id="paper">
+        <h2>Paper</h2>
+        <hr>
+        <div class="flex-row">
+            <div style="box-sizing: border-box; padding: 16px; margin: auto;">
+                <a href="assets/k-planes.pdf"><img class="screenshot" src="assets/paper_thumbnail.jpg"></a>
+            </div>
+            <div style="width: 60%">
+                <p><b>Instant Neural Graphics Primitives with a Multiresolution Hash Encoding</b></p>
+                <p>Thomas Müller, Alex Evans, Christoph Schied, Alexander Keller</p>
+
+                <div><span class="material-icons"> description </span><a href=""> Paper preprint (PDF)</a></div>
+                <div><span class="material-icons"> description </span><a href=""> arXiv version</a></div>
+                <div><span class="material-icons"> insert_comment </span><a href=""> BibTeX</a></div>
+                <div><span class="material-icons"> integration_instructions </span><a href="https://github.com/sarafridov/K-Plane"> Code</a></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="bibtex">
+        <h2>Citation</h2>
+        <hr>
+        <pre><code>
+@misc{sfk_kplanes_2023,
+    author = {Sara Fridovich-Keil, Giacomo Meanti, Frederik Rahbæk Warburg, Benjamin Recht, Angjoo Kanazawa},
+    title={K-Planes for Radiance Fields in Space, Time, and Appearance}, 
+    author={Sara Fridovich-Keil and Giacomo Meanti and Frederik Rahbæk Warburg and Benjamin Recht and Angjoo Kanazawa},
+    year={2023},
+    eprint={2112.05131},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+</code></pre>
+    </section>
+
+
+    <section id="acknowledgements">
+        <h2>Acknowledgements</h2>
+        <hr>
+        <div>
+            <p>
+            We would like to thank
+            <a href="https://www.matthewtancik.com">Matthew Tancik</a> and <a href="https://www.liruilong.cn/">Ruilong Li</a>
+            for their precious advice.
+            We also thank <a href="https://joeylitalien.github.io/">Joey Litalien</a> for providing us with the framework for this website.
+            <br/>
+            <br/>
+            <em>Detailed Drum Set</em> &copy;bryanajones (<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>)
+            <br/>
+            <em>Lego 856 Bulldozer</em> &copy;Håvard Dalen (<a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY-NC 2.0</a>)
+            <br/>
+            <em>D-NeRF dataset</em> &copy;Alberto Pumarola
+            <br/>
+            <em>DyNeRF dataset</em> (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>)
+            <br/>
+            <em>Phototourism dataset</em> (<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>)
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>This website is partially borrowed from <a href="https://nvlabs.github.io/instant-ngp">instant-NGP</a>.
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=51e0d73d83d06baa7a00000f" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd6c33218.js" type="text/javascript"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</body>
+</html>
