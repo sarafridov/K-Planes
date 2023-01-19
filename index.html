@@ -184,7 +184,7 @@ figure {
 <div class="jumbotron jumbotron-fluid">
     <div class="container"></div>
     <h1 class="nerf_title_v2">K-Planes</h1>
-    <h1 class="nerf_subheader_v2">for Radiance Fields in Space, Time, and Appearance</h1>
+    <h1 class="nerf_subheader_v2">Explicit Radiance Fields in Space, Time, and Appearance</h1>
     <hr>
     <p class="authors">
         <a href="https://people.eecs.berkeley.edu/~sfk/">Sara Fridovich-Keil*</a>,
@@ -251,7 +251,7 @@ We introduce K-Planes, a white-box model for radiance fields in arbitrary dimens
             <img class="centered" src="assets/methods_ss.jpg" alt="Diagram describing the pipeline for K-Planes.">
         </figure>
         <p class="caption_justify">
-            <b>Method overview.</b> (a) The k-plane representation decomposes 4D spatiotemporal volumes into six planes, three for space and three for spatiotemporal variations. To obtain the value of a 4D point \(\textbf{q}=(x,y,z,t)\), we first project the point into each plane (b) in which we do multiscale bilinear interpolation. (c) The interpolated values are multiplied and concatenated over \(S\) scales. (d) These features are decoded either with a small MLP or our explicit decoder. (e) We follow the standard volumetric rendering formulation to predict color and density. The model is optimized by (f) minimizing the reconstruction loss with simple regularization.
+            <b>Method overview.</b> (a) The K-Plane representation decomposes 4D spatiotemporal volumes into six planes, three for space and three for spatiotemporal variations. To obtain the value of a 4D point \(\textbf{q}=(x,y,z,t)\), we first project the point into each plane (b) in which we do multiscale bilinear interpolation. (c) The interpolated values are multiplied and concatenated over \(S\) scales. (d) These features are decoded either with a small MLP or our explicit linear decoder. (e) We follow the standard volumetric rendering formula to predict color and density. The model is optimized by (f) minimizing the reconstruction loss with simple regularization in space and time.
         </p>
     </section>
 
@@ -470,13 +470,13 @@ landmarks, such as changing time of day. Appearance codes affect color but not g
             <div style="box-sizing: border-box; padding: 16px; margin: auto;">
                 <a href="assets/k-planes.pdf"><img class="screenshot" src="assets/paper_thumbnail.jpg"></a>
             </div>
-            <div style="width: 60%">
-                <p><b>Instant Neural Graphics Primitives with a Multiresolution Hash Encoding</b></p>
-                <p>Thomas Müller, Alex Evans, Christoph Schied, Alexander Keller</p>
+            <div style="width: 54%">
+                <p><b>K-Planes: Explicit Radiance Fields in Space, Time, and Appearance</b></p>
+                <p>Sara Fridovich-Keil*, Giacomo Meanti*, Frederik Rahbæk Warburg, Benjamin Recht, and Angjoo Kanazawa</p>
 
-                <div><span class="material-icons"> description </span><a href=""> Paper preprint (PDF)</a></div>
-                <div><span class="material-icons"> description </span><a href=""> arXiv version</a></div>
-                <div><span class="material-icons"> insert_comment </span><a href=""> BibTeX</a></div>
+                <!-- <div><span class="material-icons"> description </span><a href=""> Paper preprint (PDF)</a></div> -->
+                <div><span class="material-icons"> description </span><a href=""> arXiv</a></div>
+                <!-- <div><span class="material-icons"> insert_comment </span><a href=""> BibTeX</a></div> -->
                 <div><span class="material-icons"> integration_instructions </span><a href="https://github.com/sarafridov/K-Plane"> Code</a></div>
             </div>
         </div>
@@ -488,11 +488,10 @@ landmarks, such as changing time of day. Appearance codes affect color but not g
         <hr>
         <pre><code>
 @misc{sfk_kplanes_2023,
-    author = {Sara Fridovich-Keil, Giacomo Meanti, Frederik Rahbæk Warburg, Benjamin Recht, Angjoo Kanazawa},
-    title={K-Planes for Radiance Fields in Space, Time, and Appearance}, 
+    title={K-Planes: Explicit Radiance Fields in Space, Time, and Appearance},
     author={Sara Fridovich-Keil and Giacomo Meanti and Frederik Rahbæk Warburg and Benjamin Recht and Angjoo Kanazawa},
     year={2023},
-    eprint={2112.05131},
+    eprint={},
     archivePrefix={arXiv},
     primaryClass={cs.CV}
 }
@@ -501,13 +500,13 @@ landmarks, such as changing time of day. Appearance codes affect color but not g
 
 
     <section id="acknowledgements">
-        <h2>Acknowledgements</h2>
+        <h2>Acknowledgments</h2>
         <hr>
         <div>
             <p>
             We would like to thank
             <a href="https://www.matthewtancik.com">Matthew Tancik</a> and <a href="https://www.liruilong.cn/">Ruilong Li</a>
-            for their precious advice.
+            for their precious advice, and the DyNeRF authors for their responsiveness to our questions.
             We also thank <a href="https://joeylitalien.github.io/">Joey Litalien</a> for providing us with the framework for this website.
             <br/>
             <br/>
