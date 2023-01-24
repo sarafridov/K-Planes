@@ -1,4 +1,4 @@
-# K-Planes for Radiance Fields in Space, Time, and Appearance
+# K-Planes: Explicit Radiance Fields in Space, Time, and Appearance
 
 Where we develop an extensible and explicit radiance field model which can be used for static, dynamic, and variable appearance datasets.
 
@@ -9,7 +9,7 @@ Where we develop an extensible and explicit radiance field model which can be us
 
 
 
-## Setup
+## Setup (readme in progress)
 
 We recommend setup with a conda environment, using the packages provided in `requirements.txt`.
 
