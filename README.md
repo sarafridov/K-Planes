@@ -2,22 +2,32 @@
 
 Where we develop an extensible and explicit radiance field model which can be used for static, dynamic, and variable appearance datasets.
 
-> __K-Planes for Radiance Fields in Space, Time, and Appearance__
+Code release for:
+
+> __K-Planes: Explicit Radiance Fields in Space, Time, and Appearance__
 > [Sara Fridovich-Keil](https://people.eecs.berkeley.edu/~sfk/), [Giacomo Meanti](https://www.iit.it/web/iit-mit-usa/people-details/-/people/giacomo-meanti), [Frederik Rahbæk Warburg](https://frederikwarburg.github.io/), [Benjamin Recht](https://people.eecs.berkeley.edu/~brecht/), [Angjoo Kanazawa](https://people.eecs.berkeley.edu/~kanazawa/)
-> _arXiv ..._
-> __[Project page]()&nbsp;/ [Paper]()&nbsp;/ [BibTeX]()__
+
+[Project page](https://sarafridov.github.io/K-Planes)
 
 
 
-## Setup (readme in progress)
+## Setup 
 
-We recommend setup with a conda environment, using the packages provided in `requirements.txt`.
+We recommend setup with a conda environment using PyTorch for GPU (a high-memory GPU is not required). Training and evaluation data can be downloaded from the respective websites (NeRF, LLFF, DyNeRF, D-NeRF, Phototourism). 
 
 ## Training
 
-### Synthetic NeRF
+Our config files are provided in the `configs` directory, organized by dataset and explicit vs. hybrid model version. These config files may be updated with the location of the downloaded data and your desired scene name and experiment name. To train a model, run
+```
+PYTHONPATH='.' python plenoxels/main.py --config-path path/to/config.py
+```
 
-### ...
+Note that for DyNeRF scenes it is recommended to first run for a single iteration at 4x downsampling to pre-compute and store the ray importance weights, and then run as usual at 2x downsampling. This is not required for other datasets.
+
+## Visualization/Evaluation
+
+The `main.py` script also supports rendering a novel camera trajectory, evaluating quality metrics, and rendering a space-time decomposition video from a saved model. These options are accessed via flags `--render-only`, `--validate-only`, and `--spacetime-only`, and a saved model can be specified via `--log-dir`.
+
 
 ## License and Citation
 
