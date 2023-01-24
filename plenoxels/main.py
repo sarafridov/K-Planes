@@ -20,6 +20,9 @@ print(f'gpu is {gpu}')
 
 import torch
 import torch.utils.data
+from plenoxels.runners import video_trainer
+from plenoxels.runners import phototourism_trainer
+from plenoxels.runners import static_trainer
 from plenoxels.utils.create_rendering import render_to_path, decompose_space_time
 from plenoxels.utils.parse_args import parse_optfloat
 
@@ -36,18 +39,15 @@ def load_data(model_type: str, data_downsample, data_dirs, validate_only: bool, 
     data_downsample = parse_optfloat(data_downsample, default_val=1.0)
 
     if model_type == "video":
-        from plenoxels.runners import video_trainer
         return video_trainer.load_data(
             data_downsample, data_dirs, validate_only=validate_only,
             render_only=render_only, **kwargs)
     elif model_type == "phototourism":
-        from plenoxels.runners import phototourism_trainer
         return phototourism_trainer.load_data(
             data_downsample, data_dirs, validate_only=validate_only,
             render_only=render_only, **kwargs
         )
     else:
-        from plenoxels.runners import static_trainer
         return static_trainer.load_data(
             data_downsample, data_dirs, validate_only=validate_only,
             render_only=render_only, **kwargs)

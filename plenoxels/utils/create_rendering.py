@@ -8,12 +8,12 @@ import torch
 from plenoxels.models.lowrank_model import LowrankModel
 from plenoxels.utils.my_tqdm import tqdm
 from plenoxels.ops.image.io import write_video_to_file
-from plenoxels.runners.multiscene_trainer import Trainer
+from plenoxels.runners.static_trainer import StaticTrainer
 from plenoxels.runners.video_trainer import VideoTrainer
 
 
 @torch.no_grad()
-def render_to_path(trainer: Union[VideoTrainer, Trainer], extra_name: str = "") -> None:
+def render_to_path(trainer: Union[VideoTrainer, StaticTrainer], extra_name: str = "") -> None:
     """Render all poses in the `test_dataset`, saving them to file
     Args:
         trainer: The trainer object which is used for rendering
@@ -55,7 +55,7 @@ def normalize_for_disp(img):
 
 
 @torch.no_grad()
-def decompose_space_time(trainer: Trainer, extra_name: str = "") -> None:
+def decompose_space_time(trainer: StaticTrainer, extra_name: str = "") -> None:
     """Render space-time decomposition videos for poses in the `test_dataset`.
 
     The space-only part of the decomposition is obtained by setting the time-planes to 1.

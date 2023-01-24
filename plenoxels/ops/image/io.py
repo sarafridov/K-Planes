@@ -63,6 +63,8 @@ def write_video_to_file(file_name, frames: List[np.ndarray]):
         video = cv2.VideoWriter(
             file_name, cv2.VideoWriter_fourcc(*'mp4v'), 30, (width, height))
         for img in frames:
+            if isinstance(img, torch.Tensor):
+                img = img.numpy()
             video.write(img[:, :, ::-1])  # opencv uses BGR instead of RGB
         cv2.destroyAllWindows()
         video.release()
@@ -74,6 +76,8 @@ def write_video_to_file(file_name, frames: List[np.ndarray]):
         for img in frames:
             image = np.zeros((height, width, 3), dtype=np.uint8)
             h, w = img.shape[:2]
+            if isinstance(img, torch.Tensor):
+                img = img.numpy()
             image[(height-h)//2:(height-h)//2+h, (width-w)//2:(width-w)//2+w, :] = img
             video.write(image[:, :, ::-1])  # opencv uses BGR instead of RGB
         cv2.destroyAllWindows()

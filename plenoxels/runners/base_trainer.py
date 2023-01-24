@@ -21,9 +21,6 @@ from plenoxels.runners.regularization import Regularizer
 from plenoxels.ops.lr_scheduling import (
     get_cosine_schedule_with_warmup, get_step_schedule_with_warmup
 )
-from .static_trainer import StaticTrainer
-from .phototourism_trainer import PhototourismTrainer
-from .video_trainer import VideoTrainer
 
 
 class BaseTrainer(abc.ABC):
@@ -279,7 +276,7 @@ class BaseTrainer(abc.ABC):
                 depth_name = out_name + "-depth"
                 write_png(os.path.join(self.log_dir, depth_name + ".png"), out_depth_np)
 
-        return summary, out_img_np, out_depth
+        return summary, out_img_np, out_depth_np
 
     @abc.abstractmethod
     def validate(self):
@@ -412,7 +409,7 @@ def init_dloader_random(_):
 
 
 def initialize_model(
-        runner: Union[StaticTrainer, PhototourismTrainer, VideoTrainer],
+        runner: Union['StaticTrainer', 'PhototourismTrainer', 'VideoTrainer'],
         **kwargs) -> LowrankModel:
     """Initialize a `LowrankModel` according to the **kwargs parameters.
 
@@ -424,6 +421,7 @@ def initialize_model(
     Returns:
         Initialized LowrankModel.
     """
+    from .phototourism_trainer import PhototourismTrainer
     extra_args = copy(kwargs)
     extra_args.pop('global_scale', None)
     extra_args.pop('global_translation', None)
