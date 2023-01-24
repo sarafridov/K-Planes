@@ -183,7 +183,7 @@ figure {
 <body>
 <div class="jumbotron jumbotron-fluid">
     <div class="container"></div>
-    <h1 class="nerf_title_v2">K-Planes</h1>
+    <h1 class="nerf_title_v2">K-Planes: </h1>
     <h1 class="nerf_subheader_v2">Explicit Radiance Fields in Space, Time, and Appearance</h1>
     <hr>
     <p class="authors">
@@ -194,7 +194,9 @@ figure {
         <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
     </p>
 
-    <div class="nerf_equal_v2"><span class="text-span_nerf">*</span><span class="text-span_nerf_star">*</span>Denotes Equal Contribution</div>
+    <div class="nerf_equal_v2">
+        <center> <p> * Denotes Equal Contribution </p> </center>
+    </div>
 
     </br></br>
     <div class="btn-group" role="group" aria-label="Top menu">
@@ -207,16 +209,16 @@ figure {
 <div class="container">
     <section id="teaser-videos">
         <div style="width: 25%; float: left">
-            <p class="caption_bold">Static</p>
+            <p class="caption_bold">3D  <br> Static Scene</p>
         </div>
         <div style="width: 25%; float: left">
-            <p class="caption_bold">Monocular video</p>
+            <p class="caption_bold">4D Mono-"Teleporting" Dynamic Scene</p>
         </div>
         <div style="width: 25%; float: left">
-            <p class="caption_bold">Multipose video</p>
+            <p class="caption_bold">4D Multiview <br> Dynamic Scene</p>
         </div>
         <div style="width: 25%; float: left">
-            <p class="caption_bold">Phototourism</p>
+            <p class="caption_bold">3D Varying <br> Appearance Scene</p>
         </div>
         <figure style="width: 100%; float: left">
             <video class="centered" width="100%" autoplay muted loop playsinline>
@@ -226,8 +228,7 @@ figure {
         </figure>
         <figure style="width: 100%; float: left">
             <p class="caption_justify">
-                The K-Planes model is adapted to learning radiance fields on multiple tasks. On static scenes we use an explicit representation of space as 3 orthogonal planes. Dynamic scenes require three more planes to represent variations in the scene which occur in the time dimension. Both monocular (a single view per time-step) and multi-view (multiple cameras recording at every time-step) videos are supported.
-                Lastly, unconstrained photo datasets such as <href a="https://www.cs.ubc.ca/research/image-matching-challenge/2021/data/">phototourism data</href> can also be handled with the addition of per-image latent codes. Our model is flexible and efficient, providing high quality reconstructions on all tasks with limited training time and memory.
+                <b>Planar factorization of d-dimensional spaces.</b> We propose a simple planar factorization for radiance fields that naturally extends to arbitrary-dimensional spaces, and that scales gracefully with dimension in both optimization time and model size. We show the advantages of our approach on 3D static volumes, 3D photo collections with varying appearances, and 4D dynamic videos.
             </p>
         </figure>
     </section>
@@ -235,31 +236,155 @@ figure {
     <section id="abstract"/>
         <h2>Abstract</h2>
         <hr>
-        <figure style="margin: auto; width: 80%;">
+        <figure style="margin: auto; width: 100%;">
             <img class="centered" src="assets/intro_figure.jpg" alt="Diagram describing the K-Planes model.">
         </figure>
-        <p lass="caption_justify">
-We introduce K-Planes, a white-box model for radiance fields in arbitrary dimensions. Our model uses <it>d</it>-<it>choose</it>-<it>2</it> planes to represent a d-dimensional scene. This planar decomposition makes it easy to add dimension-specific priors, e.g. temporal smoothness and multi-resolution spatial structure, and induces a natural decomposition of static and dynamic components. We propose a novel linear feature decoder using a learned color basis that yields similar performance as a nonlinear black-box MLP decoder. Across a range of synthetic and real, static and dynamic, fixed and varying appearance scenes, K-Planes yields competitive and often state-of-the-art reconstruction fidelity with low memory usage and fast optimization time, using a PyTorch implementation without any custom CUDA.
+        <p class="caption_justify">
+<b> Abstract: </b> We introduce k-planes, a white-box model for radiance fields in arbitrary dimensions. Our model uses  <it>d</it>-<it>choose</it>-<it>2</it> planes to represent a d-dimensional scene, providing a seamless way to go from static (d=3) to dynamic (d=4) scenes. This planar factorization makes adding dimension-specific priors easy, e.g. temporal smoothness and multi-resolution spatial structure, and induces a natural decomposition of static and dynamic components of a scene. We use a linear feature decoder with a learned color basis that yields similar performance as a nonlinear black-box MLP decoder. Across a range of synthetic and real, static and dynamic, fixed and varying appearance scenes, k-planes yields competitive and often state-of-the-art reconstruction fidelity with low memory usage, achieving 1000x compression over a full 4D grid, and fast optimization with a pure PyTorch implementation.
         </p>
     </section>
 
 
     <section id="method"/>
-        <h2>Method</h2>
+        <h2>K-Plane Factorization of 4D Dynamic Volumes</h2>
         <hr>
-        <figure style="margin: auto; width: 80%;">
+        <figure style="margin: auto; width: 100%;">
             <img class="centered" src="assets/methods_ss.jpg" alt="Diagram describing the pipeline for K-Planes.">
         </figure>
         <p class="caption_justify">
-            <b>Method overview.</b> (a) The K-Plane representation decomposes 4D spatiotemporal volumes into six planes, three for space and three for spatiotemporal variations. To obtain the value of a 4D point \(\textbf{q}=(x,y,z,t)\), we first project the point into each plane (b) in which we do multiscale bilinear interpolation. (c) The interpolated values are multiplied and concatenated over \(S\) scales. (d) These features are decoded either with a small MLP or our explicit linear decoder. (e) We follow the standard volumetric rendering formula to predict color and density. The model is optimized by (f) minimizing the reconstruction loss with simple regularization in space and time.
+            <b>Method overview.</b> (a) The k-plane representation decomposes 4D spatiotemporal volumes into six planes, three for space and three for spatiotemporal variations. To obtain the value of a 4D point \(\textbf{q}=(x,y,z,t)\), we first project the point into each plane (b) in which we do multiscale bilinear interpolation. (c) The interpolated values are multiplied and concatenated over \(S\) scales. (d) These features are decoded either with a small MLP or our explicit linear decoder. (e) We follow the standard volumetric rendering formula to predict color and density. The model is optimized by (f) minimizing the reconstruction loss with simple regularization in space and time.
         </p>
     </section>
 
 
     <section id="results">
-        <h2>Results</h2>
+        <h2>4D Dynamic Multiview Scenes</h2>
+        <hr>
+        <figure style="width: 50%; float: left">
+            <video class="centered" width="100%" autoplay muted loop playsinline>
+                <source src="assets/dynerf/small_salmon_path_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="caption_bold">(a) Hybrid model</p>
+        </figure>
+        <figure style="width: 50%; float: left">
+            </video><video class="centered" width="100%" autoplay muted loop playsinline>
+                <source src="assets/dynerf/small_salmon_path_linear.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="caption_bold">(b) Explicit model</p>
+        </figure>
+    </section>
+    <p class="caption_justify"> <b>Novel view synthesis for 4D dynamic volumes.</b> Both our explicit and hybrid models yield state-of-the-art reconstructions on real multi-view dynamic scenes.</p> 
 
-        <h3>Static Scenes: Forward Facing</h3>
+    <section id="results2">
+        <h2>Space-time Decomposition</h2>
+        <hr>
+
+        <!-- DyNeRF Space-time decomposition -->
+        <div style="width: 33%; float: left">
+            <p class="caption_bold">Full</p>
+        </div>
+        <div style="width: 33%; float: left">
+            <p class="caption_bold">Space-only</p>
+        </div>
+        <div style="width: 33%; float: left">
+            <p class="caption_bold">Time-only</p>
+        </div>
+        <video class="centered" width="100%" autoplay muted loop playsinline>
+            <source src="assets/dynerf/small_salmon_spacetime_mlp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video class="centered" width="100%" autoplay muted loop playsinline>
+            <source src="assets/dynerf/small_cutbeef_spacetime_mlp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <figure style="width: 100%; float: left">
+            <p class="caption_justify">
+<b>Space-time decomposition. </b> K-planes naturally decomposes a 4D video into static and dynamic components. We render the static part by setting the time planes to the identity, and the remainder is the dynamic part. This makes adding dimension-specific priors easy.
+            </p>
+        </figure>
+
+    <section id="results3">
+        <h2>4D Dynamic Monocular "Teleporting-Camera" videos</h2>
+        <hr>
+        <!-- DNeRF MLP vs. Linear -->
+        <div class="centered" style="margin-left: 16.66666%;">
+            <figure style="width: 40%; float: left">
+                <video class="centered" width="100%" autoplay muted loop playsinline>
+                    <source src="assets/dnerf/small_jumpingjacks_path_mlp.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption_bold">(a) Hybrid model</p>
+            </figure>
+            <figure style="width: 40%; float: left">
+                </video><video class="centered" width="100%" autoplay muted loop playsinline>
+                    <source src="assets/dnerf/small_jumpingjacks_path_linear.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption_bold">(b) Explicit model</p>
+            </figure>
+        </div>
+        <figure style="width: 100%; float: left">
+            <p class="caption_justify"> <b>Novel view synthesis for 4D dynamic volumes.</b>
+                Reconstruction and novel view generation on a monocular teleporting-camera dataset of dynamic synthetic objects (the D-NeRF dataset). D-NeRF training data includes a single view per timestep, but the camera can “teleport” between adjacent timesteps. See <a href="https://hangg7.com/dycheck/">"Monocular Dynamic View Synthesis: A Reality Check"</a>.
+            </p>
+        </figure>
+        <br>
+
+   <section id="results3">
+        <h2>Space-time Decomposition</h2>
+        <hr>
+        <!-- DNeRF Space-time decomposition -->
+        <div class="centered" style="margin-left: 12.5%">
+            <div style="width: 25%; float: left">
+                <p class="caption_bold">Full</p>
+            </div>
+            <div style="width: 25%; float: left">
+                <p class="caption_bold">Space-only</p>
+            </div>
+            <div style="width: 25%; float: left">
+                <p class="caption_bold">Time-only</p>
+            </div>
+            <video class="centered" width="75%" autoplay muted loop playsinline>
+                <source src="assets/dnerf/small_bouncingballs_spacetime_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video class="centered" width="75%" autoplay muted loop playsinline>
+                <source src="assets/dnerf/small_lego_spacetime_mlp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <figure style="width: 100%; float: left">
+           <p class="caption_justify">
+<b>Space-time decomposition. </b> K-planes naturally decomposes a 4D video into static and dynamic components. We render the static part by setting the time planes to the identity, and the remainder is the dynamic part. This makes adding dimension-specific priors easy.
+            </p>
+        </figure>
+    <section id="results4">
+        <h2>In the wild capture: Varying appearance</h2>
+        <hr>
+        <div class="centered">
+            <figure style="float: left;">
+                <video class="centered results_video" width="31%" autoplay muted loop playsinline>
+                    <source src="assets/nerfw/small_sacre_rendering_path.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video><video class="centered results_video" width="31%" autoplay muted loop playsinline>
+                    <source src="assets/nerfw/small_trevi_rendering_path.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video><video class="centered results_video" width="31%" autoplay muted loop playsinline>
+                    <source src="assets/nerfw/small_brandenburg_rendering_path.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </figure>
+            <p class="caption_justify">
+              <b>Varying Appearance Phototourism Scenes. </b> Like NeRF-W, we can
+interpolate our appearance code in either our explicit or hybrid model to alter the visual appearance of
+landmarks, such as changing time of day. Appearance codes affect color but not geometry; note that objects in the foreground appear and disappear as the camera moves past them. 
+            </p> 
+        </div>
+
+<section id="results5">
+<h2>3D Static Forward Facing Scenes</h2>
         <hr>
 
         <figure>
@@ -290,10 +415,11 @@ We introduce K-Planes, a white-box model for radiance fields in arbitrary dimens
             </video>
         </figure>
         <p class="caption_justify">
-            Reconstruction and novel view generation on a dataset of real-life forward facing captures (the LLFF dataset).
-        </p>
+            <b> Static forward facing scenes.</b> Reconstruction and novel view generation on a dataset of forward facing captures (the LLFF dataset).
+        </p> 
 
-        <h3>Static Scenes: Synthetic NeRF</h3>
+        <section id="results6">
+        <h2>3D Synthetic Static Scenes</h2>
         <hr>
         <figure>
             <video class="centered results_video" width="23%" autoplay muted loop playsinline>
@@ -324,141 +450,8 @@ We introduce K-Planes, a white-box model for radiance fields in arbitrary dimens
             </video>
         </figure>
         <p class="caption_justify">
-            Reconstruction and novel view generation on a dataset of synthetic objects (the NeRF dataset).
+            <b> Static 360 scenes.</b> Reconstruction and novel view generation on a dataset of synthetic objects (the NeRF dataset).
         </p>
-
-        <h3>Dynamic Scenes: Real-life capture</h3>
-        <hr>
-        <figure style="width: 50%; float: left">
-            <video class="centered" width="100%" autoplay muted loop playsinline>
-                <source src="assets/dynerf/small_salmon_path_mlp.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="caption_bold">(a) Hybrid model</p>
-        </figure>
-        <figure style="width: 50%; float: left">
-            </video><video class="centered" width="100%" autoplay muted loop playsinline>
-                <source src="assets/dynerf/small_salmon_path_linear.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="caption_bold">(b) Explicit model</p>
-        </figure>
-        <p class="caption_justify">
-            Reconstruction and novel view generation on a multiview dataset of dynamic real-life forward facing scenes (the DyNeRF dataset).
-        </p>
-
-        <br>
-
-        <!-- DyNeRF Space-time decomposition -->
-        <div style="width: 33%; float: left">
-            <p class="caption_bold">Full</p>
-        </div>
-        <div style="width: 33%; float: left">
-            <p class="caption_bold">Space-only</p>
-        </div>
-        <div style="width: 33%; float: left">
-            <p class="caption_bold">Time-only</p>
-        </div>
-        <video class="centered" width="100%" autoplay muted loop playsinline>
-            <source src="assets/dynerf/small_salmon_spacetime_mlp.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video class="centered" width="100%" autoplay muted loop playsinline>
-            <source src="assets/dynerf/small_cutbeef_spacetime_mlp.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <figure style="width: 100%; float: left">
-            <p class="caption_justify">
-K-Planes (left) naturally decomposes a 3D video into static and dynamic components. We render the static part (middle) by setting the time planes to the identity, and the remainder (right) is the dynamic part.
-            </p>
-        </figure>
-
-        <h3>Dynamic Scenes: Monocular videos</h3>
-        <hr>
-        <!-- DNeRF MLP vs. Linear -->
-        <div class="centered" style="margin-left: 16.66666%;">
-            <figure style="width: 40%; float: left">
-                <video class="centered" width="100%" autoplay muted loop playsinline>
-                    <source src="assets/dnerf/small_jumpingjacks_path_mlp.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </figure>
-            <figure style="width: 40%; float: left">
-                </video><video class="centered" width="100%" autoplay muted loop playsinline>
-                    <source src="assets/dnerf/small_jumpingjacks_path_linear.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </figure>
-
-            <figure style="width: 40%; float: left">
-                <video class="centered" width="100%" autoplay muted loop playsinline>
-                    <source src="assets/dnerf/small_trex_path_mlp.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="caption_bold">(a) Hybrid model</p>
-            </figure>
-            <figure style="width: 40%; float: left">
-                <video class="centered" width="100%" autoplay muted loop playsinline>
-                    <source src="assets/dnerf/small_trex_path_linear.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="caption_bold">(b) Explicit model</p>
-            </figure>
-        </div>
-        <figure style="width: 100%; float: left">
-            <p class="caption_justify">
-                Reconstruction and novel view generation on a monocular dataset of dynamic synthetic objects (the D-NeRF dataset).
-            </p>
-        </figure>
-        <br>
-
-        <!-- DNeRF Space-time decomposition -->
-        <div class="centered" style="margin-left: 12.5%">
-            <div style="width: 25%; float: left">
-                <p class="caption_bold">Full</p>
-            </div>
-            <div style="width: 25%; float: left">
-                <p class="caption_bold">Space-only</p>
-            </div>
-            <div style="width: 25%; float: left">
-                <p class="caption_bold">Time-only</p>
-            </div>
-            <video class="centered" width="75%" autoplay muted loop playsinline>
-                <source src="assets/dnerf/small_bouncingballs_spacetime_mlp.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <video class="centered" width="75%" autoplay muted loop playsinline>
-                <source src="assets/dnerf/small_lego_spacetime_mlp.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <figure style="width: 100%; float: left">
-            <p class="caption_justify">
-K-Planes (left) naturally decomposes a 3D video into static and dynamic components. We render the static part (middle) by setting the time planes to the identity, and the remainder (right) is the dynamic part.
-            </p>
-        </figure>
-
-        <h3>In the wild capture: Varying appearance</h3>
-        <hr>
-        <div class="centered">
-            <figure style="float: left;">
-                <video class="centered results_video" width="31%" autoplay muted loop playsinline>
-                    <source src="assets/nerfw/small_sacre_rendering_path.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video><video class="centered results_video" width="31%" autoplay muted loop playsinline>
-                    <source src="assets/nerfw/small_trevi_rendering_path.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video><video class="centered results_video" width="31%" autoplay muted loop playsinline>
-                    <source src="assets/nerfw/small_brandenburg_rendering_path.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </figure>
-            <p class="caption_justify">
-              Like NeRF-W, we can
-interpolate our appearance code in either our explicit or hybrid model to alter the visual appearance of
-landmarks, such as changing time of day. Appearance codes affect color but not geometry; note that objects in the foreground appear and disappear as the camera moves past them.
-            </p>
-        </div>
 
     </section>
 
@@ -480,6 +473,11 @@ landmarks, such as changing time of day. Appearance codes affect color but not g
                 <div><span class="material-icons"> integration_instructions </span><a href="https://github.com/sarafridov/K-Plane"> Code</a></div>
             </div>
         </div>
+
+
+<p> The day before our arxiv release, a similar paper Hexplanes was released on arxiv. Please consider checking out that paper as well: <a href="https://caoang327.github.io/HexPlane"> https://caoang327.github.io/HexPlane/ </a> </p>
+
+
     </section>
 
 
@@ -496,6 +494,7 @@ landmarks, such as changing time of day. Appearance codes affect color but not g
     primaryClass={cs.CV}
 }
 </code></pre>
+
     </section>
 
 
@@ -504,10 +503,7 @@ landmarks, such as changing time of day. Appearance codes affect color but not g
         <hr>
         <div>
             <p>
-            We would like to thank
-            <a href="https://www.matthewtancik.com">Matthew Tancik</a> and <a href="https://www.liruilong.cn/">Ruilong Li</a>
-            for their precious advice, and the DyNeRF authors for their responsiveness to our questions.
-            We also thank <a href="https://joeylitalien.github.io/">Joey Litalien</a> for providing us with the framework for this website.
+            Many thanks to <a href="https://www.matthewtancik.com">Matthew Tancik</a> and <a href="https://www.liruilong.cn/">Ruilong Li</a>, and other members of KAIR for helpful discussion and pointers to resources. We also thank the DyNeRF authors for their response to our questions about their method. We also thank <a href="https://joeylitalien.github.io/">Joey Litalien</a> for providing us with the framework for this website.
             <br/>
             <br/>
             <em>Detailed Drum Set</em> &copy;bryanajones (<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>)
