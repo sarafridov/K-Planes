@@ -5,10 +5,12 @@ Where we develop an extensible and explicit radiance field model which can be us
 Code release for:
 
 > __K-Planes: Explicit Radiance Fields in Space, Time, and Appearance__
+>
 > [Sara Fridovich-Keil](https://people.eecs.berkeley.edu/~sfk/), [Giacomo Meanti](https://www.iit.it/web/iit-mit-usa/people-details/-/people/giacomo-meanti), [Frederik Rahbæk Warburg](https://frederikwarburg.github.io/), [Benjamin Recht](https://people.eecs.berkeley.edu/~brecht/), [Angjoo Kanazawa](https://people.eecs.berkeley.edu/~kanazawa/)
 
-[Project page](https://sarafridov.github.io/K-Planes)
+:rocket: Cool videos here: [Project page](https://sarafridov.github.io/K-Planes)
 
+:newspaper: Paper here: [Paper](https://arxiv.org/abs/2301.10241)
 
 
 ## Setup 
