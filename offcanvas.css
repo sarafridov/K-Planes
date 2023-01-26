@@ -3,58 +3,89 @@
  * --------------------------------------------------
  */
 @import  url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
-@import  url("https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/css/matthewtancik.webflow.3d5d1738d.min.css");
 html,
 body {
   overflow-x: hidden;  /*Prevent scroll on narrow devices */
-  padding-top: 30px;
-    text-align: justify;
+  text-align: justify;
+  font-family: Arial,'Helvetica Neue',Helvetica,sans-serif;
 }
 footer {
   padding: 10px 0;
 }
-.authors {
-  font-size: 20px;
-}
-/*.container {
-  max-width: 768px;
-}*/
-.container {
-  max-width: 1000px;
-}
 p {
   font-size: 16px;
-  /*padding-bottom: 20px;*/
+  font-family: Lato,sans-serif;
+  margin-top: 0;
+  margin-bottom: 15px;
+  line-height: 25px;
+  font-weight: 300;
 }
-
 li {
   font-size: 16px;
 }
-
-s2 {
-    text-align: center;
-    align: center;
-    font-size: 36px;
+img {
+  border: 0;
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 20px;
+  vertical-align: middle;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+h1 {
+    font-weight:300;
+    line-height: 1.15em;
+}
+h2 {
+  margin-top: 20px;
+  margin-right: 0;
+  margin-left: 2px;
+  opacity: 1;
+  font-family: Lato,sans-serif;
+  font-size: 31px;
+  line-height: 17px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
-.jumbotron{
-    text-align: center;
+video {
+    display: inline-block;
+    margin: auto;
+    vertical-align: baseline;
+}
+figure {
+    display: block;
+    margin: 0 0 10px;
+}
+header {
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0;
+  padding: 4rem 2rem;
+}
+b, optgroup, strong {
+  font-weight: 700;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+.authors {
+  font-size: 20px;
+}
+.container {
+  max-width: 1000px;
 }
 
 .btn {
     font-size: 18px;
-}
-
-.btn-disabled {
-    /*background-color: #f4f4f4;*/
-}
-
-.jumbotron h2 {
-  font-size: 36px;
-}
-
-.section {
-  padding-top: 30px;
 }
 
 .center{
@@ -64,20 +95,7 @@ s2 {
 }
 
 .results_video {
-  margin: 0 0.5em;
-}
-.vcontainer {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-}
-.video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  width: 100%;
 }
 
 .gif {
@@ -88,24 +106,6 @@ s2 {
     text-align: center;
 }
 
-.caption {
-  width:75%; 
-  font-size:14px
-}
-
-.bibtexsection {
-  font-family: "Courier",monospace;
-  font-size:16px;
-  white-space:pre;
-  background-color: #f4f4f4;
-      margin-left: auto;
-    margin-right: auto;
-  text-align:left;
-}
-
-.canvas-row canvas {
-  max-width:100%;
-}
 
 .padding-0{
     padding-right:0;
@@ -116,3 +116,142 @@ s2 {
     margin-top: 30px;
 }
 
+.nerf_equal {
+    text-align: center;
+    position:static;
+    display:inline;
+    margin-right:0;
+    margin-left:0;
+    padding-top:17px;
+    padding-left:0;
+    clear:none;
+    font-family:'Open Sans',sans-serif;
+    color:#333;
+    padding-bottom:8px;
+    line-height:10px;
+    margin-top:11px;
+}
+
+a:link, a:visited {
+    color: #1367a7;
+    text-decoration: none;
+}
+a:hover {
+    color: #208799;
+}
+.btn-group a:link, .btn-group a:visited {
+    color: #fff;
+}
+
+section {
+    margin: 32px 0 32px 0;
+    text-align: justify;
+    clear: both;
+    padding-top: 1rem;
+}
+.row, .author-row, .affil-row {
+     overflow: auto;
+}
+.row {
+    margin: 16px 0 16px 0;
+}
+.caption-row {
+  margin: 0;
+}
+.video-row {
+  margin: 0.2rem 0 0.2rem 0;
+}
+.teaser {
+    max-width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.screenshot {
+  width: 256px;
+  border: 1px solid #ddd;
+}
+.material-icons {
+  vertical-align: -0.4rem;
+  margin-top: 0.4rem;
+}
+.caption_justify {
+  font-size: 16px;
+  /*font-style: italic;*/
+  color: #666;
+  text-align: justify;
+  margin-top: 0;
+  margin-bottom: 56px;
+  /*margin-top: 0.5rem;*/
+}
+.caption {
+  width:75%;
+  font-size:14px
+}
+.caption {  /* unused */
+  font-size: 16px;
+  /*font-style: italic;*/
+  color: #666;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 64px;
+}
+.caption_inline { /* unused */
+  font-size: 16px;
+  /*font-style: italic;*/
+  color: #666;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.caption_bold {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+#bibtex pre {
+    font-size: 14px;
+    background-color: #eee;
+    padding: 16px;
+}
+.blue {
+    color: #2c82c9;
+    font-weight: bold;
+}
+.orange {
+    color: #d35400;
+    font-weight: bold;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.venue {
+    color: #1367a7;
+}
+
+.nerf_title_v2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Varela Round',sans-serif;
+  color: #4d4d4d;
+  font-size: 50px;
+  line-height: 65px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+.nerf_subheader_v2 {
+  margin-top: 0;
+  margin-bottom: 29px;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  font-size: 20px;
+  line-height: 44px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
