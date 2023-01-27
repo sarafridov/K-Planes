@@ -38,7 +38,7 @@ The `main.py` script also supports rendering a novel camera trajectory, evaluati
       title={K-Planes for Radiance Fields in Space, Time, and Appearance},
       author={Sara Fridovich-Keil and Giacomo Meanti and Frederik Rahbæk Warburg and Benjamin Recht and Angjoo Kanazawa},
       year={2023},
-      eprint={2112.05131},
+      eprint={2301.10241},
       archivePrefix={arXiv},
       primaryClass={cs.CV}
 }
