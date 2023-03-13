@@ -16,7 +16,7 @@ config = {
  'lr': 0.01,
 
  # Regularization
- 'plane_tv_weight': 0.01,
+ 'plane_tv_weight': 0.0001,
  'plane_tv_weight_proposal_net': 0.0001,
  'histogram_loss_weight': 1.0,
  'distortion_loss_weight': 0.001,
@@ -41,7 +41,7 @@ config = {
  ],
 
  # Model settings
- 'multiscale_res': [1, 2, 4, 8],
+ 'multiscale_res': [1, 2, 4],
  'density_activation': 'trunc_exp',
  'concat_features_across_scales': True,
  'linear_decoder': True,
@@ -50,6 +50,6 @@ config = {
   'grid_dimensions': 2,
   'input_coordinate_dim': 3,
   'output_coordinate_dim': 32,
-  'resolution': [64, 64, 64]
+  'resolution': [128, 128, 128]
  }],
 }

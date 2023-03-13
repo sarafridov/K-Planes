@@ -33,8 +33,8 @@ class SyntheticNerfDataset(BaseDataset):
                 downsample=self.downsample)
             imgs = None
         else:
-            frames, transform = load_360_frames(datadir, 'test', self.max_frames)
-            imgs, poses = load_360_images(frames, datadir, 'test', self.downsample)
+            frames, transform = load_360_frames(datadir, split, self.max_frames)
+            imgs, poses = load_360_images(frames, datadir, split, self.downsample)
             intrinsics = load_360_intrinsics(
                 transform, img_h=imgs[0].shape[0], img_w=imgs[0].shape[1],
                 downsample=self.downsample)
