@@ -3,7 +3,7 @@ config = {
  'logdir': './logs/syntheticdynamic',
  'device': 'cuda:0',
 
- 'data_downsample': 1.0,
+ 'data_downsample': 2.0,
  'data_dirs': ['data/dnerf/data/lego'],
  'contract': False,
  'ndc': False,
@@ -27,7 +27,7 @@ config = {
  'l1_time_planes_proposal_net': 0.0001,
  'plane_tv_weight': 0.0001,
  'plane_tv_weight_proposal_net': 0.0001,
- 'time_smoothness_weight': 0.1,
+ 'time_smoothness_weight': 0.01,
  'time_smoothness_weight_proposal_net': 0.001,
 
  # Training settings

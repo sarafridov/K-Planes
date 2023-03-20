@@ -214,10 +214,7 @@ def init_tr_data(data_downsample, data_dir, **kwargs):
 
 
 def init_ts_data(data_dir, split, **kwargs):
-    if 'dnerf' in data_dir:
-        downsample = 1.0
-    else:
-        downsample = 2.0
+    downsample = 2.0 # Both D-NeRF and DyNeRF use downsampling by 2
     ts_dset = Video360Dataset(
         data_dir, split=split, downsample=downsample,
         max_cameras=kwargs.get('max_test_cameras', None), max_tsteps=kwargs.get('max_test_tsteps', None),

@@ -180,10 +180,9 @@ class LowrankModel(nn.Module):
             fars = ones * fars
 
         ray_bundle = RayBundle(origins=rays_o, directions=rays_d, nears=nears, fars=fars)
-        # Note: proposal sampler mustn't use timestamps (=camera-IDs) with appearance-embedding,
+        # Note: proposal sampler mustn't use timestamps (=camera-IDs) with appearance embedding,
         #       since the appearance embedding should not affect density. We still pass them in the
-        #       call below, but they will not be used as long as density-field resolutions
-        #       are be 3D.
+        #       call below, but they will not be used as long as density-field resolutions are 3D.
         ray_samples, weights_list, ray_samples_list = self.proposal_sampler.generate_ray_samples(
             ray_bundle, timestamps=timestamps, density_fns=self.density_fns)
 

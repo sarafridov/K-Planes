@@ -3,7 +3,7 @@ config = {
  'logdir': './logs/syntheticdynamic',
  'device': 'cuda:0',
 
- 'data_downsample': 1.0,
+ 'data_downsample': 2.0,
  'data_dirs': ['data/dnerf/data/lego'],
  'contract': False,
  'ndc': False,
@@ -27,7 +27,7 @@ config = {
  'l1_time_planes_proposal_net': 0.0001,
  'plane_tv_weight': 0.0001,
  'plane_tv_weight_proposal_net': 0.0001,
- 'time_smoothness_weight': 0.1,
+ 'time_smoothness_weight': 0.01,
  'time_smoothness_weight_proposal_net': 0.001,
 
  # Training settings
@@ -58,7 +58,7 @@ config = {
  # Lego: 25 (50 frames)
  # Hell Warrior and Hook: 50 (100 frames)
  # Mutant, Bouncing Balls, and Stand Up: 75 (150 frames)
- # T-Rex	and Jumping Jacks: 100 (200 frames)
+ # T-Rex and Jumping Jacks: 100 (200 frames)
  'grid_config': [{
   'grid_dimensions': 2,
   'input_coordinate_dim': 4,
