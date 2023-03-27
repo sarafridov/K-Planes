@@ -1,12 +1,12 @@
 # K-Planes: Explicit Radiance Fields in Space, Time, and Appearance
 
-Where we develop an extensible and explicit radiance field model which can be used for static, dynamic, and variable appearance datasets.
+Where we develop an extensible (to arbitrary-dimensional scenes) and explicit radiance field model which can be used for static, dynamic, and variable appearance datasets.
 
 Code release for:
 
 > __K-Planes: Explicit Radiance Fields in Space, Time, and Appearance__
 >
-> [Sara Fridovich-Keil](https://people.eecs.berkeley.edu/~sfk/), [Giacomo Meanti](https://www.iit.it/web/iit-mit-usa/people-details/-/people/giacomo-meanti), [Frederik Rahbæk Warburg](https://frederikwarburg.github.io/), [Benjamin Recht](https://people.eecs.berkeley.edu/~brecht/), [Angjoo Kanazawa](https://people.eecs.berkeley.edu/~kanazawa/)
+> [Sara Fridovich-Keil*](https://people.eecs.berkeley.edu/~sfk/), [Giacomo Meanti*](https://www.iit.it/web/iit-mit-usa/people-details/-/people/giacomo-meanti), [Frederik Rahbæk Warburg](https://frederikwarburg.github.io/), [Benjamin Recht](https://people.eecs.berkeley.edu/~brecht/), [Angjoo Kanazawa](https://people.eecs.berkeley.edu/~kanazawa/)
 
 :rocket: Cool videos here: [Project page](https://sarafridov.github.io/K-Planes)
 
@@ -34,14 +34,13 @@ The `main.py` script also supports rendering a novel camera trajectory, evaluati
 ## License and Citation
 
 ```
-@misc{sfk_kplanes_2023,
-      title={K-Planes for Radiance Fields in Space, Time, and Appearance},
-      author={Sara Fridovich-Keil and Giacomo Meanti and Frederik Rahbæk Warburg and Benjamin Recht and Angjoo Kanazawa},
+@inproceedings{kplanes_2023,
+      title={K-Planes: Explicit Radiance Fields in Space, Time, and Appearance},
+      author={{Sara Fridovich-Keil and Giacomo Meanti} and Frederik Rahbæk Warburg and Benjamin Recht and Angjoo Kanazawa},
       year={2023},
-      eprint={2301.10241},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+      booktitle={CVPR}
 }
 ```
+Note: Joint first-authorship is not fully supported in BibTex; you may need to modify the above depending on your format.
 
 This work is made available under the BSD 3-clause license. Click [here](LICENSE) to view a copy of the license.
