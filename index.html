@@ -25,8 +25,17 @@
 <header>
     <div class="text-center">
         <div class="container"></div>
-        <h1 class="nerf_title_v2">K-Planes: </h1>
-        <h1 class="nerf_subheader_v2">Explicit Radiance Fields in Space, Time, and Appearance</h1>
+        <div class="row mb-2 mt-4" id="paper-title">
+            <h1 class="col-md-12 text-center">
+                K-Planes
+            </h1>
+            <h3 class="col-md-12 text-center">
+                Explicit Radiance Fields in Space, Time, and Appearance
+            </h3>
+            <h3 class="col-md-12 text-center">
+                <small>CVPR 2023</small>
+            </h3>
+        </div>
         <hr>
         <p class="authors">
             <a href="https://people.eecs.berkeley.edu/~sfk/">Sara Fridovich-Keil*</a>,
@@ -421,13 +430,11 @@ landmarks, such as changing time of day. Appearance codes affect color but not g
         <h2>Citation</h2>
         <hr>
         <pre><code>
-@misc{sfk_kplanes_2023,
+@inproceedings{kplanes_2023,
     title={K-Planes: Explicit Radiance Fields in Space, Time, and Appearance},
     author={Sara Fridovich-Keil and Giacomo Meanti and Frederik Rahbæk Warburg and Benjamin Recht and Angjoo Kanazawa},
     year={2023},
-    eprint={2301.10241},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+    booktitle={CVPR},
 }
 </code></pre>
 
