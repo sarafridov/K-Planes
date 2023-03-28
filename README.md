@@ -8,9 +8,12 @@ Code release for:
 >
 > [Sara Fridovich-Keil*](https://people.eecs.berkeley.edu/~sfk/), [Giacomo Meanti*](https://www.iit.it/web/iit-mit-usa/people-details/-/people/giacomo-meanti), [Frederik Rahbæk Warburg](https://frederikwarburg.github.io/), [Benjamin Recht](https://people.eecs.berkeley.edu/~brecht/), [Angjoo Kanazawa](https://people.eecs.berkeley.edu/~kanazawa/)
 
-:rocket: Cool videos here: [Project page](https://sarafridov.github.io/K-Planes)
+:rocket: [Project page](https://sarafridov.github.io/K-Planes)
 
-:newspaper: Paper here: [Paper](https://arxiv.org/abs/2301.10241)
+:newspaper: [Paper](https://arxiv.org/abs/2301.10241)
+
+:file_folder: [Raw output videos](https://drive.google.com/drive/folders/1zs_folzaCdv88y065wc6365uSRfsqITH)
+
 
 
 ## Setup 
