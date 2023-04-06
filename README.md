@@ -12,7 +12,7 @@ Code release for:
 
 :newspaper: [Paper](https://arxiv.org/abs/2301.10241)
 
-:file_folder: [Raw output videos](https://drive.google.com/drive/folders/1zs_folzaCdv88y065wc6365uSRfsqITH)
+:file_folder: [Raw output videos and pretrained models](https://drive.google.com/drive/folders/1zs_folzaCdv88y065wc6365uSRfsqITH)
 
 
 
