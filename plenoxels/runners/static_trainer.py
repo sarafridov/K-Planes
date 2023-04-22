@@ -14,7 +14,7 @@ from plenoxels.utils.my_tqdm import tqdm
 from plenoxels.utils.parse_args import parse_optint
 from .base_trainer import BaseTrainer, init_dloader_random, initialize_model
 from .regularization import (
-    PlaneTV, HistogramLoss, L1ProposalNetwork, DepthTV, DistortionLoss,
+    PlaneTV, HistogramLoss, DistortionLoss,
 )
 
 
@@ -129,8 +129,6 @@ class StaticTrainer(BaseTrainer):
             PlaneTV(kwargs.get('plane_tv_weight', 0.0), what='field'),
             PlaneTV(kwargs.get('plane_tv_weight_proposal_net', 0.0), what='proposal_network'),
             HistogramLoss(kwargs.get('histogram_loss_weight', 0.0)),
-            L1ProposalNetwork(kwargs.get('l1_proposal_net_weight', 0.0)),
-            DepthTV(kwargs.get('depth_tv_weight', 0.0)),
             DistortionLoss(kwargs.get('distortion_loss_weight', 0.0)),
         ]
 
