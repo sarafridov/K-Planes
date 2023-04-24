@@ -1,7 +1,7 @@
 import json
 import logging as log
 import os
-from typing import Tuple, Optional, Any
+from typing import Tuple, Optional, Any, Union
 
 import numpy as np
 import torch
@@ -18,10 +18,12 @@ class SyntheticNerfDataset(BaseDataset):
                  split: str,
                  batch_size: Optional[int] = None,
                  downsample: float = 1.0,
-                 max_frames: Optional[int] = None):
+                 max_frames: Optional[int] = None,
+                 bg_color: Union[str, torch.Tensor] = 'random'):
         self.downsample = downsample
         self.max_frames = max_frames
         self.near_far = [2.0, 6.0]
+        self.bg_color = bg_color
 
         if split == 'render':
             frames, transform = load_360_frames(datadir, 'test', self.max_frames)
@@ -61,7 +63,14 @@ class SyntheticNerfDataset(BaseDataset):
         out = super().__getitem__(index)
         pixels = out["imgs"]
         if self.split == 'train':
-            bg_color = torch.rand((1, 3), dtype=pixels.dtype, device=pixels.device)
+            if self.bg_color == 'random':
+                bg_color = torch.rand((1, 3), dtype=pixels.dtype, device=pixels.device)
+            elif self.bg_color == 'white':
+                bg_color = torch.tensor([[1.0, 1.0, 1.0]], dtype=pixels.dtype, device=pixels.device)
+            elif self.bg_color == 'black':
+                bg_color = torch.tensor([[0., 0., 0.]], dtype=pixels.dtype, device=pixels.device)
+            else:
+                bg_color = self.bg_color
         else:
             if pixels is None:
                 bg_color = torch.ones((1, 3), dtype=torch.float32, device='cuda:0')

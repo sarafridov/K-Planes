@@ -160,7 +160,8 @@ def init_tr_data(data_downsample: float, data_dirs: Sequence[str], **kwargs):
         max_tr_frames = parse_optint(kwargs.get('max_tr_frames'))
         dset = SyntheticNerfDataset(
             data_dir, split='train', downsample=data_downsample,
-            max_frames=max_tr_frames, batch_size=batch_size)
+            max_frames=max_tr_frames, batch_size=batch_size,
+            bg_color=kwargs.get('bg_color', 'random'))
     elif dset_type == "llff":
         hold_every = parse_optint(kwargs.get('hold_every'))
         dset = LLFFDataset(
@@ -188,7 +189,9 @@ def init_ts_data(data_dirs: Sequence[str], split: str, **kwargs):
     if dset_type == "synthetic":
         max_ts_frames = parse_optint(kwargs.get('max_ts_frames'))
         dset = SyntheticNerfDataset(
-            data_dir, split=split, downsample=1, max_frames=max_ts_frames)
+            data_dir, split=split, downsample=1, max_frames=max_ts_frames,
+            bg_color=kwargs.get('bg_color', 'white'),
+        )
     elif dset_type == "llff":
         hold_every = parse_optint(kwargs.get('hold_every'))
         dset = LLFFDataset(
