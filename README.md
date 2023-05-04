@@ -14,6 +14,9 @@ Code release for:
 
 :file_folder: [Raw output videos and pretrained models](https://drive.google.com/drive/folders/1zs_folzaCdv88y065wc6365uSRfsqITH)
 
+<img src="https://github.com/sarafridov/K-Planes/blob/gh-pages/assets/nerfacc.png" alt="nerfacc" width="50"/>[Integration with NerfAcc library for even faster training](https://www.nerfacc.com/en/stable/examples/dynamic/kplanes.html)
+
+<img src="https://github.com/sarafridov/K-Planes/blob/gh-pages/assets/dozer.png" alt="nerfacc" width="50"/>[Integration with NerfStudio for easier visualization and development](https://github.com/Giodiro/kplanes_nerfstudio)
 
 
 ## Setup 
