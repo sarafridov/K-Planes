@@ -27,14 +27,14 @@ def compute_plane_tv(t: torch.Tensor, only_last_dim: bool = False) -> float:
     Returns:
         Total variance
     """
-    _, h, w = t.shape
+    _, _, h, w = t.shape
     w_tv = torch.square(t[..., :, 1:] - t[..., :, : w - 1]).mean()
 
     if only_last_dim:
         return w_tv
 
     h_tv = torch.square(t[..., 1:, :] - t[..., : h - 1, :]).mean()
-    return h_tv + w_tv
+    return (h_tv + w_tv) / 2
 
 
 def compute_plane_smoothness(t: torch.Tensor) -> float:
