@@ -369,7 +369,7 @@ class BaseTrainer(abc.ABC):
     def init_optim(self, **kwargs) -> torch.optim.Optimizer:
         optim_type = kwargs['optim_type']
         if optim_type == 'adam':
-            optim = torch.optim.Adam(params=self.model.get_params(kwargs['lr']), eps=1e-15)
+            optim = torch.optim.Adam(params=self.model.get_params(kwargs['lr']), eps=kwargs.get('eps', 1e-15))
         else:
             raise NotImplementedError()
         return optim
