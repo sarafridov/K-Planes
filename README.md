@@ -12,7 +12,7 @@ Code release for:
 
 :newspaper: [Paper](https://arxiv.org/abs/2301.10241)
 
-:file_folder: [Raw output videos and pretrained models](https://drive.google.com/drive/folders/1zs_folzaCdv88y065wc6365uSRfsqITH)
+:file_folder: [Raw output videos and pretrained models](https://drive.google.com/drive/folders/1herNzUGgsuUO7MzzOpMiJhpSvYAwm_G4)
 
 <img src="https://github.com/sarafridov/K-Planes/blob/gh-pages/assets/nerfacc.png" alt="nerfacc" width="50"/>[Integration with NerfAcc library for even faster training](https://www.nerfacc.com/en/stable/examples/dynamic/kplanes.html)
 
